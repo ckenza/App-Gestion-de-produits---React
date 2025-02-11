@@ -1,6 +1,6 @@
 import React from "react";
-import {Box, Typography, Link} from "@mui/material";
 import logo from "../../images/glam_skincare_logo.png"
+
 const Footer = () => {
     return (
         <footer>

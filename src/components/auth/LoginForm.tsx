@@ -21,7 +21,7 @@ const LoginForm: FC<{}> = ({}) => {
     };
 
     return (
-        <section>
+        <section className="login">
             <div className="loginContainer">
                 <ul>
                     <li onClick={() => setSelected("Client")}
