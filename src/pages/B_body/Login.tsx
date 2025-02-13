@@ -6,9 +6,7 @@ import Footer from "../C_footer/Footer";
 const Login: FC<{}> = ({}) => {
     return (
         <>
-
             <LoginForm/>
-
         </>
     );
 };
