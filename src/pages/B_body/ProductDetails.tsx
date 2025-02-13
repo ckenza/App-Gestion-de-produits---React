@@ -1,8 +1,7 @@
 import {FC, useState} from 'react';
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
-import Navbar from "../../components/header/Navbar";
-import {ExpandMore, Add} from "@mui/icons-material";
+import {Add} from "@mui/icons-material";
 
 const ProductDetails: FC<{}> = ({}) => {
 
@@ -13,7 +12,6 @@ const ProductDetails: FC<{}> = ({}) => {
 
     return (
         <>
-            <Navbar/>
 
             <section className="productDetails">
 

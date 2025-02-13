@@ -4,10 +4,6 @@ import logo from "../../images/glam_skincare_logo.png"
 const Footer = () => {
     return (
         <footer>
-            {/* Logo */}
-            <a>
-                <img src={logo} alt="Glam skincare Logo" style={{width:"150px"}}/>
-            </a>
 
             {/* Links */}
             <ul>

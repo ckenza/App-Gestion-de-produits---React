@@ -7,9 +7,7 @@ const Login: FC<{}> = ({}) => {
     return (
         <>
 
-            <Navbar/>
             <LoginForm/>
-            <Footer/>
 
         </>
     );

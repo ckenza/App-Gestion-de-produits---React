@@ -23,7 +23,8 @@
 
 
 
-        /* FOOTER */
+
+            /* FOOTER */
 
 footer{
   text-align: center;
@@ -142,7 +143,7 @@ form button{
   padding: 50px 0;
 }
 
-h1{
+.dashboardTitle{
   font-size: 35px;
   text-align: center;
 }
@@ -235,4 +236,78 @@ h1{
 .detailContent.open {
   max-height: 500px;
   padding: 10px;
+}
+
+
+
+
+
+
+                  /* CART */
+
+
+/* PRODUCT CART LAYOUT */
+
+
+.productCartContainer{
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+
+.productCartImage{
+  background-color: grey;
+  width: 110px;
+  height: 110px;
+}
+
+
+
+
+
+
+.cartTitle{
+  font-size: 30px;
+}
+
+
+.cart{
+  margin: 70px 0;
+  padding: 40px;
+}
+
+
+.cartLayout{
+  display: flex;
+  flex-direction: row;
+}
+
+
+.detailCart{
+  padding: 10px;
+  border: 1px solid black;
+  width: 65%;
+  height: auto;
+}
+
+.totalCart{
+  padding: 10px;
+  border: 1px solid black;
+  width: 35%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.submitCart{
+  width: 100%;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
 }

@@ -1,7 +1,8 @@
 import {FC} from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
-import logo from "../../images/glam_skincare_logo.png"
+import logo from "../../images/glam_skincare_logo.png";
+import PersonIcon from '@mui/icons-material/Person';
 
 const Navbar: FC<{}> = ({}) => {
 
@@ -23,6 +24,8 @@ const Navbar: FC<{}> = ({}) => {
                 <div>
                     <ShoppingBagIcon sx={{fontSize: "30px", cursor: "pointer"}}/>
                 </div>
+
+                <PersonIcon sx={{fontSize: "35px", cursor: "pointer"}}/>
 
 
             </nav>
