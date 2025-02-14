@@ -8,7 +8,7 @@ interface ProductItemProps {
     product: Partial<ProductType>
 }
 
-const ProductLayout: FC<ProductItemProps> = ({product}) => {
+const ProductLayout: FC<{ product: ProductType }> = ({product}) => {
 
     const navigate = useNavigate();
 
@@ -27,15 +27,18 @@ const ProductLayout: FC<ProductItemProps> = ({product}) => {
 
             <div style={{display: "flex", flexDirection: "column"}}>
                 <h2 style={{width: "100%", paddingLeft: "5px"}}>{product.titleProduct}</h2>
-                <div style={{display: "flex", justifyContent:"space-between", alignItems: "center", padding: "0 15px"}}>
+                <div
+                    style={{display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0 15px"}}>
                     <p style={{fontSize: "18px"}}>{product.price}</p>
-                    <p>Détails</p>
+                    <p style={{textDecoration: "underline"}}>Détails</p>
                 </div>
             </div>
 
         </div>
 
     );
-};
+
+}
+
 
 export default ProductLayout;

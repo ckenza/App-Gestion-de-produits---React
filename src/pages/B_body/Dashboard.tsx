@@ -2,6 +2,7 @@ import {FC, useEffect, useState} from 'react';
 import {get} from "../../API/api";
 import ProductLayout from '../../components/ProductLayout';
 
+
 const Dashboard: FC = () => {
     const [productList, setProductList] = useState<any[]>([]);
 

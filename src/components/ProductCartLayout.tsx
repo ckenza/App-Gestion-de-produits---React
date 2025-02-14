@@ -1,11 +1,9 @@
-import {FC, useState} from 'react';
+import {FC, useContext, useState} from 'react';
 import '../App.css';
-import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
-import RemoveIcon from "@mui/icons-material/Remove";
-import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from '@mui/icons-material/Delete';
+import {ProductItem as ProductType} from "../@types/product";
 
-const ProductCartLayout: FC<{}> = ({}) => {
+const ProductCartLayout: FC<{ product: ProductType }> = ({product}) => {
 
 
     const [quantity, setQuantity] = useState(1);
@@ -21,11 +19,11 @@ const ProductCartLayout: FC<{}> = ({}) => {
             </div>
 
             <div style={{display: "flex", flexDirection: "column", marginLeft: "20px"}}>
-                <h2 style={{width: "100%", paddingLeft: "5px"}}>Titre du produit</h2>
+                <h2 style={{width: "100%", paddingLeft: "5px"}}>{product.titleProduct}</h2>
                 <div
                     style={{display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0 15px"}}>
                     <div style={{display:"flex", justifyContent: "space-between", alignItems:"center", width: "130px"}}>
-                        <p style={{fontSize: "18px"}}>Total produit : </p>
+                        <p style={{fontSize: "18px", marginRight:2}}>Prix produit : {product.price}</p>
                     </div>
                 </div>
             </div>
