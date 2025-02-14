@@ -10,7 +10,6 @@ export const AddToCartProvider: React.FC<{ children: React.ReactNode }> = ({chil
 
     const [addToCart, setAddToCart] = useState<ProductItem[]>([]);
 
-
     return (
         <AddToCartContext.Provider value={{addToCart, setAddToCart}}>
             {children}

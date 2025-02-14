@@ -31,15 +31,22 @@ const ProductDetails: FC = () => {
 
     const addClick = (product: ProductItem) => {
         if (product.stock > 0) {
-            const isAdded = addToCart.some((added: ProductItem) => added.idProduct === product.idProduct);
+            // Vérifie si le produit est déjà dans le panier
+            const existingProductIndex = addToCart.findIndex((added: ProductItem) => added.idProduct === product.idProduct);
 
-            if (!isAdded) {
-                setAddToCart([...addToCart, product]); // Ajouter au panier
+            if (existingProductIndex !== -1) {
+                // Si le produit existe déjà, on met à jour la quantité du produit dans le panier
+                const updatedCart = [...addToCart];
+                updatedCart[existingProductIndex].quantity += quantity;
+                setAddToCart(updatedCart);  // Met à jour le panier avec la nouvelle quantité
+            } else {
+                // Si le produit n'existe pas encore, on l'ajoute au panier avec la quantité choisie
+                setAddToCart([...addToCart, {...product, quantity}]);
             }
 
-            // Diminuer le stock localement
+            // Diminuer le stock localement pour l'affichage
             setProduct(prevProduct =>
-                prevProduct ? {...prevProduct, stock: prevProduct.stock - 1} : prevProduct
+                prevProduct ? {...prevProduct, stock: prevProduct.stock - quantity} : prevProduct
             );
         }
     };
