@@ -1,15 +1,18 @@
 import {FC, useEffect, useState} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import logo from "../../images/glam_skincare_logo.png";
 import PersonIcon from '@mui/icons-material/Person';
 import {ProductItem} from "../../@types/product"; // Import de l'interface
+import "../../App.css"
 
 
 
 const Navbar: FC<{}> = ({}) => {
+
+    const navigate = useNavigate();
 
     const [searchVisible, setSearchVisible] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
@@ -21,9 +24,8 @@ const Navbar: FC<{}> = ({}) => {
         setIsLoading(true);
 
         try {
-            const response = await axios.get(`http://localhost:8080/products/search`, {
-                params: {query}
-            });
+            const response = await axios.get(`http://localhost:8080/product/search?query=${query}`)
+            console.log(response)
 
             setProducts(response.data || []); // Assure que la réponse est bien un tableau
         } catch (error) {
@@ -74,21 +76,18 @@ const Navbar: FC<{}> = ({}) => {
 
                     {/* Affichage des résultats de recherche */}
                     <div className="searchResults">
-                        {isLoading ? (
-                            <p>Chargement...</p>
-                        ) : products.length > 0 ? (
+                        {products.length > 0 && (
                             <ul>
                                 {products.map((product) => (
-                                    <li key={product.idProduct} className="searchResultItem">
+                                    <li key={product.idProduct} className="searchResultItem"
+                                        onClick={() => navigate(`ProductDetails/${product.idProduct}`)}>
                                         <img src={product.imageUrl} alt={product.titleProduct}
                                              style={{width: "50px", marginRight: "10px"}}/>
                                         <span>{product.titleProduct} - {product.price}€</span>
                                     </li>
                                 ))}
                             </ul>
-                        ) : searchQuery ? (
-                            <p>Aucun produit trouvé.</p>
-                        ) : null}
+                        ) }
                     </div>
                 </div>
             )}
