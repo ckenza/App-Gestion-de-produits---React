@@ -1,6 +1,7 @@
 import {FC} from 'react';
 import '../../App.css';
 import ProductCartLayout from "../../components/ProductCartLayout";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const Cart: FC<{}> = ({}) => {
 
@@ -8,7 +9,10 @@ const Cart: FC<{}> = ({}) => {
         <>
 
             <section className="cart">
-                <h1 className="cartTitle">Panier</h1>
+                <div style={{width: "200px", display : "flex", justifyContent: "space-between", alignItems: "center", cursor:"pointer"}}>
+                    <h1 className="cartTitle">Panier</h1>
+                    <DeleteIcon/>
+                </div>
 
                 <div className="cartLayout">
                     <div className="detailCart">

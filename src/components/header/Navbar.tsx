@@ -1,30 +1,58 @@
-import {FC, useState} from 'react';
+import {FC, useEffect, useState} from 'react';
+import {Link} from "react-router-dom";
+import axios from "axios";
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import logo from "../../images/glam_skincare_logo.png";
 import PersonIcon from '@mui/icons-material/Person';
-import {Link} from "react-router-dom";
+import {ProductItem} from "../../@types/product"; // Import de l'interface
+
+
 
 const Navbar: FC<{}> = ({}) => {
 
     const [searchVisible, setSearchVisible] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
+    const [products, setProducts] = useState<ProductItem[]>([]); // Utilisation de ProductItem
+    const [isLoading, setIsLoading] = useState(false);
+
+    const fetchProducts = async (query: string) => {
+        if (!query) return;
+        setIsLoading(true);
+
+        try {
+            const response = await axios.get(`http://localhost:8080/products/search`, {
+                params: {query}
+            });
+
+            setProducts(response.data || []); // Assure que la réponse est bien un tableau
+        } catch (error) {
+            console.error("Erreur lors de la récupération des produits :", error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        if (searchQuery) {
+            const debounce = setTimeout(() => fetchProducts(searchQuery), 500);
+            return () => clearTimeout(debounce);
+        }
+    }, [searchQuery]);
 
     return (
         <>
-
             <nav className="navbar">
                 <div>
-                    <SearchIcon sx={{fontSize:"35px", cursor: "pointer"}}
+                    <SearchIcon sx={{fontSize: "35px", cursor: "pointer"}}
                                 onClick={() => setSearchVisible(!searchVisible)}/>
                 </div>
 
-
-
                 <div>
-                    <a href="/" className="logo">
+                    <Link to="/" className="logo">
                         <img src={logo} alt="Glam Skincare Logo" className="logo-image"
-                        style={{width:"150px"}}/>
-                    </a>
+                             style={{width: "150px"}}/>
+                    </Link>
                 </div>
 
                 <Link style={{color: "black"}} to="/Panier">
@@ -34,18 +62,36 @@ const Navbar: FC<{}> = ({}) => {
                 </Link>
 
                 <Link style={{color: "black"}} to="/Connexion">
-                 <PersonIcon sx={{fontSize: "35px", cursor: "pointer"}}/>
+                    <PersonIcon sx={{fontSize: "35px", cursor: "pointer"}}/>
                 </Link>
-
-
             </nav>
 
             {searchVisible && (
                 <div className="searchBar">
-                    <input type="text" placeholder="Rechercher un produit" className="searchInput"/>
+                    <input type="text" placeholder="Rechercher un produit" className="searchInput"
+                           onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+
+                    {/* Affichage des résultats de recherche */}
+                    <div className="searchResults">
+                        {isLoading ? (
+                            <p>Chargement...</p>
+                        ) : products.length > 0 ? (
+                            <ul>
+                                {products.map((product) => (
+                                    <li key={product.idProduct} className="searchResultItem">
+                                        <img src={product.imageUrl} alt={product.titleProduct}
+                                             style={{width: "50px", marginRight: "10px"}}/>
+                                        <span>{product.titleProduct} - {product.price}€</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        ) : searchQuery ? (
+                            <p>Aucun produit trouvé.</p>
+                        ) : null}
+                    </div>
                 </div>
             )}
-
         </>
     );
 };

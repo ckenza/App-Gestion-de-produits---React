@@ -121,9 +121,7 @@ form button{
 }
 
 .productImage{
-  background-color: grey;
-  width: 80%;
-  height: 200px;
+  height: auto;
   margin: auto;
 }
 

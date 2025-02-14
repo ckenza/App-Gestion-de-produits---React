@@ -16,7 +16,7 @@ function App() {
                 <Route path="/" element={<LayoutWithBar/>}>
                     <Route index element={<Dashboard/>}/>
                     <Route path="Accueil" element={<Dashboard/>}/>
-                    <Route path="Détail/:id" element={<ProductDetails/>}/>
+                    <Route path="ProductDetails/:idProduct" element={<ProductDetails/>}/>
                     <Route path="Panier" element={<Cart/>}/>
                     <Route path="Connexion" element={<Login/>}/>
                 </Route>
