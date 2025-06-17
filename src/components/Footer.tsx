@@ -1,10 +1,8 @@
 import React from "react";
-import logo from "../../images/glam_skincare_logo.png"
 
 const Footer = () => {
     return (
         <footer>
-
             {/* Links */}
             <ul>
                 <li>
