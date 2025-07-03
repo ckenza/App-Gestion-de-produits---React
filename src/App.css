@@ -20,10 +20,6 @@
 }
 
 
-
-
-
-
             /* FOOTER */
 
 footer{
@@ -46,49 +42,29 @@ footer ul li{
 
 
 
-
           /* LOGIN */
 
-.login{
-  height: 50vh;
-  text-align: center;
+.auth{
   padding: 80px 0;
-  vertical-align: center;
 }
 
-.loginContainer{
+.authContainer{
   width: 600px;
   margin: auto;
   background-color: #fafafa;
-  padding: 0 0 40px;
-}
-
-
-.loginContainer ul{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding: 0;
-}
-
-.loginContainer ul li{
-  list-style: none;
-  margin: 0 40px;
-  width: 50%;
-  height: 40px;
-  line-height: 40px;
-  padding: 10px 0;
-  cursor: pointer;
+  border-radius: 30px;
+  padding: 20px;
 }
 
 form{
   display: flex;
   flex-direction: column;
+  justify-content: start;
+  padding: 30px;
 }
 
 form input{
-  width: 70%;
-  margin: 10px auto;
+  margin: 10px 0 30px;
   padding: 10px;
   border-radius: 10px;
 }
@@ -103,16 +79,13 @@ form button{
 }
 
 
-
-
-
                 /* PRODUCT LAYOUT */
 
 .productContainer{
   width: 250px;
   border: solid 1px black;
-  height: 350px;
-  padding: 5px;
+  height: 370px;
+  padding: 12px;
   cursor: pointer;
 }
 
@@ -126,11 +99,7 @@ form button{
 }
 
 
-
-
-
             /* DASHBOARD */
-
 
 .dashboard{
   display: flex;
@@ -148,9 +117,7 @@ form button{
 
 
 
-
           /* PRODUCT DETAILS */
-
 
 .productDetails{
   display: flex;
@@ -167,10 +134,13 @@ form button{
 .imageProduct{
   width: 500px;
   height: 500px;
-  background-color: gray;
   position: sticky;
   top: 100px;
   align-self: flex-start;
+  background-color: #fff1f3;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .details{
@@ -200,8 +170,6 @@ form button{
   padding: 0 70px;
   border-radius: 5px;
 }
-
-
 
 
 .detailContainer{
@@ -237,15 +205,10 @@ form button{
 }
 
 
-
-
-
-
                   /* CART */
 
 
 /* PRODUCT CART LAYOUT */
-
 
 .productCartContainer{
   padding: 20px;
@@ -256,15 +219,12 @@ form button{
 
 
 .productCartImage{
-  background-color: grey;
   width: 110px;
   height: 110px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-
-
-
-
-
 
 .cartTitle{
   font-size: 30px;
@@ -312,35 +272,46 @@ form button{
 
 
 
-                  /* SEARCH */
+                  /* SEARCHBAR */
 
 
-.searchBar{
-  margin: 50px 0;
-  text-align: center;
+.searchBar {
+  position: absolute;
+  top: 70px; /* ajuste selon la hauteur de ta navbar */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 400px;
+  padding: 10px;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.searchInput{
-  width: 800px;
+.searchInput {
+  width: 100%;
   padding: 12px;
   border: 2px solid black;
   border-radius: 5px;
+  box-sizing: border-box;
 }
 
-
-
-
-          /* SEARCH BAR AND RESULTS */
-
-
-.searchResults{
+.searchResults {
   text-align: start;
-  width: 900px;
-  margin: auto;
+  width: 100%;
+  margin-top: 10px;
+  box-sizing: border-box;
 }
 
 
-.searchResults li{
+.result-option {
+  width: 90%;
+  height: 50vh;
+  overflow-y: auto;
+}
+
+.result-option li{
   list-style: none;
   cursor: pointer;
   margin: 30px 0;

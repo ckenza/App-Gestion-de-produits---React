@@ -1,9 +1,9 @@
 import {FC, useEffect, useState} from 'react';
-import {get} from "../../API/api";
-import ProductLayout from '../../components/ProductLayout';
+import {get} from "../API/api";
+import ProductItem from '../components/ProductItem';
 
 
-const Dashboard: FC = () => {
+const Home: FC = () => {
     const [productList, setProductList] = useState<any[]>([]);
 
     useEffect(() => {
@@ -37,7 +37,7 @@ const Dashboard: FC = () => {
             <div className="dashboard">
                 {productList.length > 0 ? (
                     productList.map((product: any) => (
-                        <ProductLayout key={product.id} product={product}/>
+                        <ProductItem key={product.id} product={product}/>
                     ))
                 ) : (
                     <p>Aucun produit disponible.</p>
@@ -47,4 +47,4 @@ const Dashboard: FC = () => {
     );
 };
 
-export default Dashboard;
+export default Home;
