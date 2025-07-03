@@ -1,6 +1,6 @@
 import {FC, useEffect, useRef, useState} from 'react';
 import {useNavigate} from "react-router-dom";
-import {ProductItem} from "../@types/product";
+import {ProductItem} from "../@types/app";
 import axios from "axios";
 import "../App.css";
 
@@ -79,15 +79,15 @@ const SearchBar: FC<SearchBarProps> = ({visible, onClose}) => {
                 {!isLoading && products.length > 0 ? (
                     <ul className="result-option">
                         {products.map((product) => (
-                            <li key={product.idProduct} className="searchResultItem"
+                            <li key={product.id} className="searchResultItem"
                                 onClick={() => {
-                                    navigate(`/ProductDetails/${product.idProduct}`)
+                                    navigate(`/product/${product.id}`)
                                     onClose();
                                     setIsInputFocused(false);
                                 }}
                             >
-                                <img src={product.imageUrl} alt={product.titleProduct} style={{width: "50px", marginRight: "10px"}}/>
-                                <span>{product.titleProduct} - {product.price}€</span>
+                                <img src={product.image} alt={product.title} style={{width: "50px", marginRight: "10px"}}/>
+                                <span>{product.title} - {product.price}€</span>
                             </li>
                         ))}
                     </ul>
