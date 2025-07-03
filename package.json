@@ -16,9 +16,11 @@
     "@types/react-dom": "^18.3.1",
     "axios": "^1.7.9",
     "dexie": "^4.0.10",
+    "jwt-decode": "^4.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-helmet-async": "^2.0.5",
+    "react-hook-form": "^7.58.1",
     "react-router-dom": "^7.1.5",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
@@ -47,5 +49,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/jwt-decode": "^2.2.1"
   }
 }
