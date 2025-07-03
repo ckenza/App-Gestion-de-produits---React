@@ -1,44 +1,37 @@
 import {FC} from 'react';
 import '../App.css';
-import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
-import {ProductItem as ProductType} from "../@types/product";
+import {ProductItem as ProductType} from "../@types/app";
 import {useNavigate} from "react-router-dom";
 
 interface ProductItemProps {
-    product: Partial<ProductType>
+    product: ProductType
 }
 
-const ProductLayout: FC<{ product: ProductType }> = ({product}) => {
+const ProductItem: FC<ProductItemProps> = ({product}) => {
 
     const navigate = useNavigate();
-
-    console.log("Produit reçu :", product);
-
 
     return (
 
         <div className="productContainer"
-             onClick={() => navigate(`/ProductDetails/${product.idProduct}`)}>
-
+             onClick={() => navigate(`/product/${product.id}`)}
+        >
             <div className="productImage">
-                <img src={product.imageUrl} alt={product.titleProduct} style={{width: "100%", height: "auto"}}/>
+                <img src={product.image} alt={product.title} style={{width: "100%", height: "auto"}}/>
             </div>
 
-
             <div style={{display: "flex", flexDirection: "column"}}>
-                <h2 style={{width: "100%", paddingLeft: "5px"}}>{product.titleProduct}</h2>
+                <h2 style={{width: "100%", paddingLeft: "5px"}}>{product.title}</h2>
                 <div
                     style={{display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0 15px"}}>
                     <p style={{fontSize: "18px"}}>{product.price}</p>
                     <p style={{textDecoration: "underline"}}>Détails</p>
                 </div>
             </div>
-
         </div>
 
     );
-
 }
 
 
-export default ProductLayout;
+export default ProductItem;
