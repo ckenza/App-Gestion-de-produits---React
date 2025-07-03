@@ -4,6 +4,16 @@ axios.defaults.baseURL = 'http://localhost:8080';
 axios.defaults.headers.post["Accept"] = "application/json";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 axios.defaults.withCredentials = false;
+axios.interceptors.request.use(
+    (config) => {
+        const token = localStorage.getItem("token"); // récupéré depuis le context indirectement
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+    },
+    (error) => Promise.reject(error)
+);
 
 
 axios.interceptors.response.use(
@@ -44,7 +54,7 @@ axios.interceptors.response.use(
 );
 
 
-export const get = (url: string, config: any = {}) => {
+export const get = async (url: string, config: any = {}) => {
     return axios.get(url, config)
         .then((response) => response.data)
         .catch((error) => {
@@ -53,5 +63,22 @@ export const get = (url: string, config: any = {}) => {
         });
 };
 
-// Exemple d'utilisation
+export const post = async (url: string, data: object, config: any = {}) => {
+    return axios.post(url, data, config)
+    .then((response) => response.data)
+    .catch((error) => {
+        console.error("API call failed", error);
+        return undefined;
+    })
+};
+
+export const put = async (url: string, data: object, config: any = {}) => {
+    return axios.put(url, data, config)
+        .then((response) => response.data)
+        .catch((error) => {
+            console.error("API call failed", error);
+            return undefined;
+        })
+};
+
 get("/product/all").then((data) => console.log("Produits:", data));
