@@ -1,9 +1,15 @@
-import {FC} from 'react';
-import Navbar from "../../components/header/Navbar";
+import {FC, useEffect} from 'react';
 import LoginForm from "../../components/auth/LoginForm";
-import Footer from "../C_footer/Footer";
 
 const Login: FC<{}> = ({}) => {
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }, []);
+
     return (
         <>
             <LoginForm/>
